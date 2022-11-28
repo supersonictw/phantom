@@ -4,7 +4,7 @@ services:
     image: postgres:12-alpine
     container_name: phantom-data
     ports:
-      - 127.0.0.1:2101:3306
+      - 127.0.0.1:2101:5432
     volumes:
       - database:/var/lib/postgresql/data
     networks:
