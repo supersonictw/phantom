@@ -1,36 +1,39 @@
 version: "2.2"
 services:
   database:
-    image: mariadb
-    container_name: illusion-data
+    image: postgres:12-alpine
+    container_name: phantom-data
     ports:
-      - 127.0.0.1:2001:3306
+      - 127.0.0.1:2101:3306
     volumes:
-      - database:/var/lib/mysql
+      - database:/var/lib/postgresql/data
     networks:
-      - illusion
+      - phantom
     environment:
-      MARIADB_ROOT_PASSWORD: illusion-admin
+      POSTGRES_PASSWORD: phantom-admin
     restart: always
 
   cache:
-    image: redis
-    container_name: illusion-cache
+    image: redis:7.0
+    container_name: phantom-cache
     ports:
-      - 127.0.0.1:2002:6379
+      - 127.0.0.1:2102:6379
     networks:
-      - illusion
+      - phantom
     restart: always
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: illusion-pma
+  pgadmin:
+    image: dpage/pgadmin4:6.15
+    container_name: phantom-pga
     ports:
-      - 127.0.0.1:2003:80
+      - 127.0.0.1:2103:80
     networks:
-      - illusion
+      - phantom
     environment:
-      PMA_HOST: "illusion-data"
+      PGADMIN_DEFAULT_EMAIL: "phantom@example.org"
+      PGADMIN_DEFAULT_PASSWORD: "phantom-admin"
+      PGADMIN_CONFIG_SESSION_EXPIRATION_TIME: 365
+      PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME: 60
     restart: always
 
 volumes:
@@ -38,5 +41,5 @@ volumes:
     driver: local
 
 networks:
-  illusion:
+  phantom:
     driver: bridge

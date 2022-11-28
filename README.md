@@ -1,12 +1,18 @@
-# Illusion
+# Phantom
 
-docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
+docker-composer.yml of postgresql + redis + pgadmin, for sample only.
 
-## MariaDB default account
+## PostgreSQL default account
 
-| Username | Password       |
-| -------- | -------------- |
-| root     | illusion-admin |
+| Username | Password      |
+| -------- | ------------- |
+| postgres | phantom-admin |
+
+## pgAdmin default account
+
+| Email Address       | Password      |
+| ------------------- | ------------- |
+| phantom@example.org | phantom-admin |
 
 ## External Ports
 
@@ -14,12 +20,12 @@ Allow to connect via `localhost` only.
 
 | Service    | Port |
 | ---------- | ---- |
-| MariaDB    | 2001 |
-| Redis      | 2002 |
-| phpMyAdmin | 2003 |
+| PostgreSQL | 2101 |
+| Redis      | 2102 |
+| pgAdmin    | 2103 |
 
 ## License
 
 [MIT License](LICENSE)
 
-> (c)2021 [SuperSonic](https://github.com/supersonictw).
+> (c)2022 [SuperSonic](https://github.com/supersonictw).
