@@ -10,13 +10,23 @@ docker-composer.yml of postgresql + redis + pgadmin, for sample only.
 
 ## pgAdmin default account
 
-| Email Address       | Password      |
-| ------------------- | ------------- |
-| phantom@example.org | phantom-admin |
+| Email Address        | Password      |
+| -------------------- | ------------- |
+| postgres@example.org | phantom-admin |
+
+## Internal Hosts/Ports
+
+Allow to connect via networking `phantom` only.
+
+| Service    | Host          | Port |
+| ---------- | ------------- | ---- |
+| PostgreSQL | phantom-data  | 5432 |
+| Redis      | phantom-cache | 6379 |
+| pgAdmin    | phantom-pga   | 80   |
 
 ## External Ports
 
-Allow to connect via `localhost` only.
+Allow to connect via host `localhost` only.
 
 | Service    | Port |
 | ---------- | ---- |

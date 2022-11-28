@@ -30,7 +30,7 @@ services:
     networks:
       - phantom
     environment:
-      PGADMIN_DEFAULT_EMAIL: "phantom@example.org"
+      PGADMIN_DEFAULT_EMAIL: "postgres@example.org"
       PGADMIN_DEFAULT_PASSWORD: "phantom-admin"
       PGADMIN_CONFIG_SESSION_EXPIRATION_TIME: 365
       PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME: 60
