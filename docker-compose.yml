@@ -1,4 +1,7 @@
-version: "2.2"
+# phantom - docker-composer.yml of postgresql + redis + pgadmin, for sample only.
+# (c) 2023 SuperSonic (https://github.com/supersonictw)
+
+version: "3.5"
 services:
   database:
     image: postgres:12-alpine
@@ -42,4 +45,5 @@ volumes:
 
 networks:
   phantom:
+    name: phantom
     driver: bridge
