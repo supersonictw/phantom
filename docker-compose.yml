@@ -1,7 +1,6 @@
 # phantom - docker-composer.yml of postgresql + redis + pgadmin, for sample only.
-# (c) 2025 Shiranui (https://shiranui.xyz)
+# (c) 2026 Shiranui (https://shiranui.xyz)
 
-version: "3.5"
 services:
   database:
     image: postgres:18-alpine
@@ -13,7 +12,7 @@ services:
     networks:
       - phantom
     environment:
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-phantom-admin}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?Run sh .init first to generate .env file}"
     restart: always
 
   cache:
@@ -33,10 +32,10 @@ services:
     networks:
       - phantom
     environment:
-      PGADMIN_DEFAULT_EMAIL: "postgres@example.org"
-      PGADMIN_DEFAULT_PASSWORD: "${POSTGRES_PASSWORD:-phantom-admin}"
-      PGADMIN_CONFIG_SESSION_EXPIRATION_TIME: 365
-      PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME: 60
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL:-postgres@example.org}"
+      PGADMIN_DEFAULT_PASSWORD: "${POSTGRES_PASSWORD:?Run sh .init first to generate .env file}"
+      PGADMIN_CONFIG_SESSION_EXPIRATION_TIME: "${PGADMIN_CONFIG_SESSION_EXPIRATION_TIME:-365}"
+      PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME: "${PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME:-60}"
     restart: always
 
 volumes:
