@@ -2,17 +2,19 @@
 
 docker-composer.yml of postgresql + redis + pgadmin, for sample only.
 
+> Before startup, run `sh .init.sh` to generate a random password for rendering the `.env` file.
+
 ## PostgreSQL default account
 
-| Username | Password      |
-| -------- | ------------- |
-| postgres | phantom-admin |
+| Username | Password        |
+| -------- | --------------- |
+| postgres | (Shown in .env) |
 
 ## pgAdmin default account
 
-| Email Address        | Password      |
-| -------------------- | ------------- |
-| postgres@example.org | phantom-admin |
+| Email Address        | Password        |
+| -------------------- | --------------- |
+| postgres@example.org | (Shown in .env) |
 
 ## Internal Hosts/Ports
 

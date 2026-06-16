@@ -1,10 +1,10 @@
 # phantom - docker-composer.yml of postgresql + redis + pgadmin, for sample only.
-# (c) 2023 SuperSonic (https://github.com/supersonictw)
+# (c) 2025 Shiranui (https://shiranui.xyz)
 
 version: "3.5"
 services:
   database:
-    image: postgres:12-alpine
+    image: postgres:18-alpine
     container_name: phantom-data
     ports:
       - 127.0.0.1:2101:5432
@@ -13,11 +13,11 @@ services:
     networks:
       - phantom
     environment:
-      POSTGRES_PASSWORD: phantom-admin
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-phantom-admin}"
     restart: always
 
   cache:
-    image: redis:7.0
+    image: redis:7.2
     container_name: phantom-cache
     ports:
       - 127.0.0.1:2102:6379
@@ -26,7 +26,7 @@ services:
     restart: always
 
   pgadmin:
-    image: dpage/pgadmin4:6.15
+    image: dpage/pgadmin4:9.15
     container_name: phantom-pga
     ports:
       - 127.0.0.1:2103:80
@@ -34,7 +34,7 @@ services:
       - phantom
     environment:
       PGADMIN_DEFAULT_EMAIL: "postgres@example.org"
-      PGADMIN_DEFAULT_PASSWORD: "phantom-admin"
+      PGADMIN_DEFAULT_PASSWORD: "${POSTGRES_PASSWORD:-phantom-admin}"
       PGADMIN_CONFIG_SESSION_EXPIRATION_TIME: 365
       PGADMIN_CONFIG_MAX_SESSION_IDLE_TIME: 60
     restart: always
